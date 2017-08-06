@@ -1,0 +1,52 @@
+{
+    "name": "projeto-api",
+    "version": "1.0.0",
+    "main": "src/server.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "nodemon ./src/server.js",
+        "start": "node ./src/server.js",
+        "lint": "eslint **/*.js",
+        "lint:fix": "eslint **/*.js --fix",
+        "test": "mocha",
+        "test-integration": "mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js"
+    },
+    "engines": {
+        "node": "^8.2.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://joaopaulogse@bitbucket.org/joaopaulogse/projeto-api.git"
+    },
+    "dependencies": {
+        "apidoc": "^0.17.6",
+        "bcrypt-nodejs": "^0.0.3",
+        "body-parser": "^1.17.2",
+        "compression": "^1.7.0",
+        "cors": "^2.8.4",
+        "cross-env": "^5.0.2",
+        "dotenv-safe": "^4.0.4",
+        "express": "^4.15.3",
+        "express-validation": "^1.0.2",
+        "global": "^4.3.2",
+        "helmet": "^3.8.1",
+        "http-status": "^1.0.1",
+        "joi": "^10.6.0",
+        "pg": "^7.0.2",
+        "pg-hstore": "^2.3.2",
+        "sequelize": "^4.4.2"
+    },
+    "devDependencies": {
+        "chai": "^4.1.1",
+        "supertest": "^3.0.0",
+        "eslint": "^4.3.0",
+        "eslint-config-airbnb": "^15.1.0",
+        "eslint-plugin-chai-expect": "^1.1.1",
+        "eslint-plugin-import": "^2.7.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.1.0",
+        "jest": "^20.0.4",
+        "mocha": "^3.5.0",
+        "nodemon": "^1.11.0"
+    }
+}
