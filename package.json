@@ -6,9 +6,9 @@
     "scripts": {
         "dev": "nodemon ./src/server.js",
         "start": "node ./src/server.js",
-        "lint": "eslint **/*.js",
-        "lint:fix": "eslint **/*.js --fix",
-        "test": "mocha",
+        "lint": "eslint **/**/*.js --ignore-pattern '!node_modules/*'",
+        "lint:fix": "eslint **/**/*.js --fix",
+        "test": "jest",
         "test-integration": "mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js"
     },
     "engines": {
@@ -32,9 +32,12 @@
         "helmet": "^3.8.1",
         "http-status": "^1.0.1",
         "joi": "^10.6.0",
+        "mongoose": "^4.11.12",
+        "morgan": "^1.8.2",
         "pg": "^7.0.2",
         "pg-hstore": "^2.3.2",
-        "sequelize": "^4.4.2"
+        "sequelize": "^4.4.2",
+        "sequelize-cli": "^3.0.0-3"
     },
     "devDependencies": {
         "chai": "^4.1.1",
