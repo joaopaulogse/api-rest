@@ -6,3 +6,12 @@ exports.error404 = (req, res, next) => {
     });
     next();
 }
+
+exports.error400 = (err, req, res, next) =>{
+    res.status(HttpStatus.BAD_REQUEST).json({
+        error: err.errors,
+        status: err.status,
+        statusText: err.statusText
+    })
+    next()
+}

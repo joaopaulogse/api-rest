@@ -1,19 +1,20 @@
 const User = require("../models/user.model");
 const HttpStatus = require("http-status");
-
+//mongodb
+const Users = require('../models/users.model');
 
 exports.create = function(req, res) {
     const { username, password, email, tipo } = req.body;
-    User.create({ username, password, email, tipo }).then(users => {
+    Users.create({ username, password, email, tipo }).then(users => {
             res.status(HttpStatus.OK).send(users)
         })
         .catch(err => {
-            res.status(HttpStatus.BAD_REQUEST).send(err);
             console.error(err);
+            res.status(HttpStatus.BAD_REQUEST).send(err);
         })
 }
 exports.listarUsuarios = (req, res) => {
-    User.findAll().then(users => {
+    Users.find().then(users => {
             res.status(HttpStatus.OK).json(users);
         })
         .catch(err => {
@@ -22,24 +23,25 @@ exports.listarUsuarios = (req, res) => {
         });
 }
 exports.loadUser = (req, res, next) => {
-    User.findById(req.params.id).then(user => res.status(HttpStatus.OK).send(user))
+    Users.findById(req.params.id)
+        .then(user => res.status(HttpStatus.OK).send(user))
         .catch(err => {
             res.status(HttpStatus.NOT_FOUND).send("não achado!");
             console.error(err);
         })
 }
 exports.update = (req, res, next) => {
-    const { username, email, tipo } = req.body;
-    User.update({ username, email, tipo }, { where: { id: req.params.id } })
-        .then(() => res.status(HttpStatus.NO_CONTENT))
+    const { username, email, tipo, password } = req.body;
+    Users.findByIdAndUpdate(req.params.id, { $set: { username, password, email, tipo } }, {new:true})
+        .then(user => res.status(HttpStatus.CREATED).send(user))
         .catch(err => {
             res.status(HttpStatus.BAD_REQUEST).send("Não foi alterado!");
             console.error(err);
         })
 }
 exports.deleteUser = (req, res, next) => {
-    User.destroy({ where: { id: req.params.id } })
-        .then(() => res.status(HttpStatus.NO_CONTENT))
+    Users.findByIdAndRemove(req.params.id)
+        .then(() => res.status(HttpStatus.CREATED).send('Deletado com Sucesso!'))
         .catch(err => {
             res.status(HttpStatus.BAD_REQUEST).send("não foi possivel deletar!")
             console.error(err);

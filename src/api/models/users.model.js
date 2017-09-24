@@ -15,7 +15,13 @@ const Users = mongoose.Schema({
     },
     createdAt:{
         type:Date,
-        default:new Date.now
+        default: Date.now()
+    },
+    tipo:{
+        type:String,
+        enum:['ADMIN', 'USUARIO'],
+        default:'USUARIO',
+        required:true
     }
 })
 
