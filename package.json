@@ -4,11 +4,11 @@
     "main": "src/server.js",
     "license": "MIT",
     "scripts": {
-        "dev": "nodemon ./src/server.js",
+        "dev": "cross-env NODE_ENV=development nodemon ./src/server.js",
         "start": "node ./src/server.js",
         "lint": "eslint **/**/*.js --ignore-pattern '!node_modules/*'",
         "lint:fix": "eslint **/**/*.js --fix",
-        "test": "jest",
+        "test": "cross-env NODE_ENV=test jest",
         "test-integration": "mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js"
     },
     "engines": {
@@ -25,6 +25,7 @@
         "compression": "^1.7.0",
         "cors": "^2.8.4",
         "cross-env": "^5.0.2",
+        "dotenv": "^4.0.0",
         "dotenv-safe": "^4.0.4",
         "express": "^4.15.3",
         "express-validation": "^1.0.2",
@@ -41,7 +42,6 @@
     },
     "devDependencies": {
         "chai": "^4.1.1",
-        "supertest": "^3.0.0",
         "eslint": "^4.3.0",
         "eslint-config-airbnb": "^15.1.0",
         "eslint-plugin-chai-expect": "^1.1.1",
@@ -50,6 +50,7 @@
         "eslint-plugin-react": "^7.1.0",
         "jest": "^20.0.4",
         "mocha": "^3.5.0",
-        "nodemon": "^1.11.0"
+        "nodemon": "^1.11.0",
+        "supertest": "^3.0.0"
     }
 }
