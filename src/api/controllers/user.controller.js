@@ -1,4 +1,4 @@
-const User = require("../models/user.model");
+// sequelize const User = require("../models/user.model");
 const HttpStatus = require("http-status");
 //mongodb
 const Users = require('../models/users.model');
