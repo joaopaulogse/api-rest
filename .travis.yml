@@ -4,6 +4,7 @@ cache: yarn
 
 before_install:
   - npm install -g yarn
+  - cp .env.example .env
 
 install: yarn install
 
