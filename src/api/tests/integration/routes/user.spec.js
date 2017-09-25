@@ -86,6 +86,28 @@ describe('Servidor de Test de Integração', () => {
         })
     })
 
+    describe('NOT FOUND PUT /users/:id', ()=>{
+        it('Verificando Not found usuario', done=>{
+            request(server)
+                .put(`/users/1`)
+                .then(response=>{
+                    expect(response.statusCode).equal(400);
+                    done();
+                })
+        })
+    })
+
+    describe('NOT FOUND DELETE /users/:id', ()=>{
+        it('Verificando Not found usuario', done=>{
+            request(server)
+                .delete(`/users/1`)
+                .then(response=>{
+                    expect(response.statusCode).equal(400);
+                    done();
+                })
+        })
+    })
+
     describe('NOT FOUND GET /urlqualquer', ()=>{
         it('Verificando Not found url', done=>{
             request(server)
@@ -96,4 +118,5 @@ describe('Servidor de Test de Integração', () => {
                 })
         })
     })
+
 })
