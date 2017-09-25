@@ -8,6 +8,7 @@ before_install:
 install: yarn install
 
 script: 
+  - yarn run test-integration-jest
   - yarn run production
 
 services:
