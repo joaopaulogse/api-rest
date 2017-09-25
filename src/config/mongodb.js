@@ -16,7 +16,7 @@ mongoogse.connection.on("open", ()=>{
     console.log("Database connected")
 })
 mongoogse.connection.on("error", error=>{
-    console.error("Database with Error: ", error)
+    console.error("Database with Error: ", error.message)
 })
 console.log("Ambiente: ", vars.env)
 module.exports = mongoogse;

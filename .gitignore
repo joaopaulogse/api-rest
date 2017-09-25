@@ -1,6 +1,6 @@
 # pasta dos modulos
 node_modules
-
+coverage
 # variaveis de produção
 .env
 *.log

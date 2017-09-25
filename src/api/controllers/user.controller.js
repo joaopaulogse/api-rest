@@ -17,10 +17,6 @@ exports.listarUsuarios = (req, res) => {
     Users.find().then(users => {
             res.status(HttpStatus.OK).json(users);
         })
-        .catch(err => {
-            res.status(HttpStatus.NOT_FOUND).send('Não foi possivel buscar os Usuários!');
-            console.error(err);
-        });
 }
 exports.loadUser = (req, res, next) => {
     Users.findById(req.params.id)

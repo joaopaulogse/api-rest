@@ -74,4 +74,26 @@ describe('Servidor de Test de Integração', () => {
                 });
         });
     });
+
+    describe('NOT FOUND GET /users/:id', ()=>{
+        it('Verificando Not found usuario', done=>{
+            request(server)
+                .get(`/users/1`)
+                .then(response=>{
+                    expect(response.statusCode).equal(404);
+                    done();
+                })
+        })
+    })
+
+    describe('NOT FOUND GET /urlqualquer', ()=>{
+        it('Verificando Not found url', done=>{
+            request(server)
+                .get(`/naoexiste`)
+                .then(response=>{
+                    expect(response.statusCode).equal(404);
+                    done();
+                })
+        })
+    })
 })
