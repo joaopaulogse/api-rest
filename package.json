@@ -6,8 +6,8 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon ./src/server.js",
         "start": "node ./src/server.js",
-        "lint": "eslint **/**/*.js --ignore-pattern '!node_modules/*'",
-        "lint:fix": "eslint **/**/*.js --fix",
+        "lint": "eslint **/**/*.js ",
+        "lint:fix": "eslint **/**/*.js --fix --ignore-path .gitignore",
         "test": "cross-env NODE_ENV=test jest",
         "test-integration-jest": "cross-env NODE_ENV=test jest",
         "test-coverage": "cross-env NODE_ENV=test istanbul cover jest",
@@ -67,5 +67,6 @@
                 "statements": 80
             }
         }
-    }
+    },
+    "eslintIgnore": ["node_modules/*"]
 }

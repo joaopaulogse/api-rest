@@ -4,5 +4,13 @@
         "describe": true,
         "it": true,
         "expect": true
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "semi": "error",
+        "quotes": ["error", "double"]
+    },
+    "env": {
+        "node": true
     }
 }

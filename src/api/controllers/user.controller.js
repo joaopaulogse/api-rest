@@ -9,7 +9,7 @@ exports.create = function(req, res) {
             res.status(HttpStatus.OK).send(users)
         })
         .catch(err => {
-            console.error(err);
+            console.error(err.message);
             res.status(HttpStatus.BAD_REQUEST).send(err);
         })
 }
@@ -23,7 +23,7 @@ exports.loadUser = (req, res, next) => {
         .then(user => res.status(HttpStatus.OK).send(user))
         .catch(err => {
             res.status(HttpStatus.NOT_FOUND).send("não achado!");
-            console.error(err);
+            console.error(err.message);
         })
 }
 exports.update = (req, res, next) => {
@@ -32,7 +32,7 @@ exports.update = (req, res, next) => {
         .then(user => res.status(HttpStatus.CREATED).send(user))
         .catch(err => {
             res.status(HttpStatus.BAD_REQUEST).send("Não foi alterado!");
-            console.error(err);
+            console.error(err.message);
         })
 }
 exports.deleteUser = (req, res, next) => {
@@ -40,6 +40,6 @@ exports.deleteUser = (req, res, next) => {
         .then(() => res.status(HttpStatus.CREATED).send('Deletado com Sucesso!'))
         .catch(err => {
             res.status(HttpStatus.BAD_REQUEST).send("não foi possivel deletar!")
-            console.error(err);
+            console.error(err.message);
         })
 }
