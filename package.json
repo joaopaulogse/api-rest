@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon ./src/server.js",
-        "start": "node ./src/server.js",
+        "production": "pm2 start ./src/server.js --name API-REST",
         "lint": "eslint **/**/*.js ",
         "lint:fix": "eslint **/**/*.js --fix --ignore-path .gitignore",
         "test": "cross-env NODE_ENV=test jest",
@@ -39,6 +39,7 @@
         "morgan": "^1.8.2",
         "pg": "^7.0.2",
         "pg-hstore": "^2.3.2",
+        "pm2": "^2.7.1",
         "sequelize": "^4.4.2",
         "sequelize-cli": "^3.0.0-3"
     },
@@ -68,5 +69,7 @@
             }
         }
     },
-    "eslintIgnore": ["node_modules/*"]
+    "eslintIgnore": [
+        "node_modules/*"
+    ]
 }
