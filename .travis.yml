@@ -8,7 +8,6 @@ before_install:
 install: yarn install
 
 script: 
-  - cp .env.example .env
   - yarn run start
 
 services:
