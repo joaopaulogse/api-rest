@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon ./src/server.js",
         "start": "node src/server.js",
+        "build":"pm2 start ./src/server.js --name API-REST -f",
         "production": "pm2 start ./src/server.js --name API-REST",
         "lint": "eslint **/**/*.js ",
         "lint:fix": "eslint **/**/*.js --fix --ignore-path .gitignore",

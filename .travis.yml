@@ -8,8 +8,7 @@ before_install:
 install: yarn install
 
 script: 
-  - ./build -t
-  - ./build -p
+  - ./build -t && ./build -p
 
 services:
   - mongodb
