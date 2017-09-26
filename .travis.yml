@@ -8,7 +8,8 @@ before_install:
 install: yarn install
 
 script: 
-  - ./build -t && ./build -p && ./build -e
+  - yarn run test-integration-jest
+  - yarn run build
 
 services:
   - mongodb
