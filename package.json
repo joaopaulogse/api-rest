@@ -10,7 +10,7 @@
         "lint": "eslint **/**/*.js ",
         "lint:fix": "eslint **/**/*.js --fix --ignore-path .gitignore",
         "test": "cross-env NODE_ENV=test jest",
-        "test-integration-jest": "cross-env NODE_ENV=test jest",
+        "test-integration-jest": "cross-env NODE_ENV=test jest --forceExit",
         "test-coverage": "cross-env NODE_ENV=test istanbul cover jest",
         "test-integration:mocha": "cross-env NODE_ENV=test mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js"
     },
@@ -46,6 +46,7 @@
     },
     "devDependencies": {
         "chai": "^4.1.1",
+        "commander": "^2.11.0",
         "eslint": "^4.3.0",
         "eslint-config-airbnb": "^15.1.0",
         "eslint-plugin-chai-expect": "^1.1.1",
