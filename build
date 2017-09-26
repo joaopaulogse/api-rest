@@ -45,4 +45,5 @@ program
             console.log(code.toString())
         })
     })
+    .option('-e, --exit', 'exit', ()=>process.exit(1))
     .parse(process.argv);
