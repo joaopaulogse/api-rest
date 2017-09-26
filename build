@@ -18,8 +18,8 @@ if(program.production){
         console.log(data.toString())
     })
     npm.on('close', code=>{
-        process.exit(1)
         console.log(code.toString())
+        process.exit(0)
     })
 
 }
