@@ -9,7 +9,7 @@ EXPOSE 3000
 
 RUN apt-get install curl -y
 RUN npm install -g n
-RUN n stable
+RUN n '8.2.1'
 
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
@@ -17,6 +17,6 @@ ENV NODE_ENV $NODE_ENV
 RUN mkdir /app
 WORKDIR /app
 ADD package.json yarn.lock /app/
-RUN yarn --pure-lockfile
+RUN yarn --pure-lockfile 
 ADD . /app
-
+RUN yarn run dev
