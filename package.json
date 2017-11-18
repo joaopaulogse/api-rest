@@ -6,11 +6,12 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon ./src/server.js",
         "start": "node src/server.js",
+        "build": "pm2 start ./src/server.js --name API-REST -f",
         "production": "pm2 start ./src/server.js --name API-REST",
         "lint": "eslint **/**/*.js ",
         "lint:fix": "eslint **/**/*.js --fix --ignore-path .gitignore",
         "test": "cross-env NODE_ENV=test jest",
-        "test-integration-jest": "cross-env NODE_ENV=test jest",
+        "test-integration-jest": "cross-env NODE_ENV=test jest --forceExit",
         "test-coverage": "cross-env NODE_ENV=test istanbul cover jest",
         "test-integration:mocha": "cross-env NODE_ENV=test mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js"
     },
@@ -19,7 +20,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://joaopaulogse@bitbucket.org/joaopaulogse/projeto-api.git"
+        "url": "https://github.com/joaopaulogse/api-rest.git"
     },
     "dependencies": {
         "apidoc": "^0.17.6",
@@ -34,7 +35,7 @@
         "express-session": "^1.15.5",
         "express-validation": "^1.0.2",
         "global": "^4.3.2",
-        "helmet": "^3.8.1",
+        "helmet": "^3.8.2",
         "http-status": "^1.0.1",
         "joi": "^10.6.0",
         "mongoose": "^4.11.12",
@@ -48,6 +49,7 @@
     },
     "devDependencies": {
         "chai": "^4.1.1",
+        "commander": "^2.11.0",
         "eslint": "^4.3.0",
         "eslint-config-airbnb": "^15.1.0",
         "eslint-plugin-chai-expect": "^1.1.1",
