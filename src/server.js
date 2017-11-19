@@ -11,8 +11,9 @@ require("./config/mongodb")
   //   console.log(`Server https up, localhost:${port}
   // Ambiente: ${env}`);
   // });
-  http.Server(app).listen(port, ()=>{
-    console.log(`Server http up, localhost:${port}
+  const server = http.createServer(app);
+  server.listen(port, '0.0.0.0',()=>{
+    console.log(`Server http up, ${server.address().address}:${port}
     Ambiente: ${env}`);
   })
 module.exports = app;
