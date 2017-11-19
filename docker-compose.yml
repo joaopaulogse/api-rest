@@ -1,14 +1,20 @@
-version: '2'
+version: '3'
 services:
   web:
+    container_name: api-rest
     build: .
     volumes:
       - ./:/app
     ports:
-      - 3000:${PORT}
+      - 3000:3000
+    command:
+      - './node_modules/.bin/nodemon'
     links:
       - mongo
   mongo:
+    container_name: mongodb
     image: mongo
     ports: 
       - 27017:27017
+    volumes:
+      - ./data:/data/db

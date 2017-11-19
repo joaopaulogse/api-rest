@@ -4,3 +4,4 @@ coverage
 # variaveis de produção
 .env
 *.log
+data
