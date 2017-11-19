@@ -13,7 +13,8 @@ require("./config/mongodb")
   // });
   const server = http.createServer(app);
   server.listen(port, '0.0.0.0',()=>{
-    console.log(`Server http up, ${server.address().address}:${port}
+    console.log(`Server http up, ${server.address().address}:${server.address().port}
+    Family:${server.address().family}
     Ambiente: ${env}`);
   })
 module.exports = app;

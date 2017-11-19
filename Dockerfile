@@ -8,4 +8,4 @@ ENV NODE_ENV $NODE_ENV
 RUN mkdir /app
 WORKDIR /app
 ADD . /app
-RUN npm install 
+RUN yarn install 
