@@ -9,7 +9,7 @@ const { error404, error400 } = require("../api/middleware/error");
 const app = express();
 
 app.use(helmet());
-app.use(logger("combined"));
+app.use(logger("[:date] - :method :url :status :response-time ms - :res[content-length]"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
