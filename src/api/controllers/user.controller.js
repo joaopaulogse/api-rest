@@ -24,7 +24,6 @@ exports.loadUser = (req, res, next) => {
     Users.findById(req.params.id)
         .then(user => res.status(HttpStatus.OK).send(user))
         .catch(err => {
-            res.setHeader('Content-Type', 'application/json')
             res.status(HttpStatus.NOT_FOUND).send("não achado!");
             console.error(err.message);
         })
@@ -44,7 +43,6 @@ exports.update = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
     Users.findByIdAndRemove(req.params.id)
         .then(() => {
-            res.setHeader('Content-Type', 'application/json')
             res.status(HttpStatus.CREATED).send('Deletado com Sucesso!')
         })
         .catch(err => {
