@@ -1,0 +1,61 @@
+const { 
+    GraphQLSchema,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLList,
+    GraphQLBoolean,
+    GraphQLInt
+ } = require('graphql');
+
+const User = require('./users.model');
+
+var users = new GraphQLObjectType({
+  name: 'user',
+  description: 'Lista de Usuários',
+  fields: () => ({
+      _id:{
+        type:(GraphQLInt),
+        description:'Identificador único do usuário'
+      },
+    username: {
+      type: GraphQLString,
+      description: 'Nome do Usuário.',
+    },
+    email: {
+      type: GraphQLString,
+      description: 'Email do Usuário'
+    },
+    password:{
+        type:GraphQLString,
+        description:'Senha do Usuário'
+    },
+    createdAt:{
+        type:GraphQLString,
+        description:'Data de criação'
+    },
+    tipo:{
+        type:GraphQLString
+    }
+  })
+});
+
+let schema = new GraphQLSchema({
+    query: new GraphQLObjectType({
+        name:'users',
+        fields:{
+            user: {
+                type:new GraphQLList(users),
+                resolve:()=>{
+                    return new Promise((resolve, reject)=>{
+                         User.find().then(user=>{
+                            resolve(user);
+                            }).catch(err=>{
+                                reject(err)
+                            })
+                    })
+                }
+            }
+        }
+    })
+})
+module.exports = { schema };
