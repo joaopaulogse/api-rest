@@ -1,46 +1,46 @@
-const { sequelize, DataTypes } = require('../../config/database');
-const bcrypt = require('bcrypt-nodejs');
+const { sequelize, DataTypes } = require("../../config/database");
+const bcrypt = require("bcrypt-nodejs");
 
 
-const User = sequelize.define('users', {
+const User = sequelize.define("users", {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notEmpty: true
-        }
+            notEmpty: true,
+        },
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notEmpty: true
-        }
+            notEmpty: true,
+        },
     },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            notEmpty: true
+            notEmpty: true,
         },
         set(email) {
             this.setDataValue("email", email.toLowerCase());
-        }
+        },
     },
     tipo: {
-        type: DataTypes.ENUM(['admin', 'user']),
-        defaultValue: 'user',
+        type: DataTypes.ENUM(["admin", "user"]),
+        defaultValue: "user",
         set(tipo) {
-            this.setDataValue('tipo', tipo.toLowerCase());
+            this.setDataValue("tipo", tipo.toLowerCase());
         },
-        comment: 'Tipo do usuario!',
+        comment: "Tipo do usuario!",
     },
 }, {
     hooks: {
-        beforeCreate: user => {
+        beforeCreate: (user) => {
             const salt = bcrypt.genSaltSync();
             user.set("password", bcrypt.hashSync(user.password, salt));
-        }
+        },
     },
     classMethods: {
         isPassword: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword),

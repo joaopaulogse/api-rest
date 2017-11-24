@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const routes = require("../api/routes");
 const logger = require("morgan");
-const cors = require("./cors")
+const cors = require("./cors");
 const { error404, error400 } = require("../api/middleware/error");
 
 const app = express();
@@ -21,6 +21,6 @@ app.use(error404);
 app.use(error400);
 
 /** Cors */
-app.use(cors)
+app.use(cors);
 
 module.exports = app;
