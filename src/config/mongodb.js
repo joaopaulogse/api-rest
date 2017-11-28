@@ -4,11 +4,11 @@ const vars = require("./vars");
 mongoogse.Promise = global.Promise;
 
 if (vars.env === "development") {
-    mongoogse.connect(`mongodb://${"localhost" || "mongo"}/mydb`, {
+    mongoogse.connect(`mongodb://${process.env.NODE_AMBIENTE == "docker"?"mongo":"localhost"}/mydb`, {
         useMongoClient: true,
     });
 } else if (vars.env === "test") {
-    mongoogse.connect(`mongodb://${"localhost" || "mongo"}/testIntegration`, {
+    mongoogse.connect(`mongodb://${process.env.NODE_AMBIENTE == "docker"?"mongo":"localhost"}/testIntegration`, {
         useMongoClient: true,
     });
 }

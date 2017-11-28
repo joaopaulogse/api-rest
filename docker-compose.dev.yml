@@ -9,6 +9,8 @@ services:
       - 3003:3003
     command:
       - './node_modules/.bin/nodemon'
+    environment:
+      - NODE_AMBIENTE=docker
     links:
       - mongo
   mongo:

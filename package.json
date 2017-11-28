@@ -13,7 +13,8 @@
         "test": "cross-env NODE_ENV=test jest",
         "test-integration-jest": "cross-env NODE_ENV=test jest --forceExit",
         "test-coverage": "cross-env NODE_ENV=test istanbul cover jest",
-        "test-integration:mocha": "cross-env NODE_ENV=test mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js"
+        "test-integration:mocha": "cross-env NODE_ENV=test mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js",
+        "docker:dev":"docker-compose -f docker-compose.dev.yml up"
     },
     "engines": {
         "node": "^8.2.1"

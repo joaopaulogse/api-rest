@@ -16,11 +16,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(routes);
 
+/** Cors */
+app.use(cors);
+
 /** Middlewares de error */
 app.use(error404);
 app.use(error400);
 
-/** Cors */
-app.use(cors);
 
 module.exports = app;
