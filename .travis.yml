@@ -9,6 +9,8 @@ install: yarn install
 
 script: 
   - cp .env.example .env
+  - cp localhost-cert.pem localhost-cert.pem 
+  - cp localhost-privkey.pem localhost-privkey.pem 
   - yarn run test-integration-jest
   - yarn run build
 
