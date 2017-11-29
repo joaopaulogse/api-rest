@@ -7,6 +7,7 @@ services:
       - ./:/app
     ports:
       - 3003:3003
+      - 3443:3443
     command:
       - './node_modules/.bin/nodemon'
     environment:
