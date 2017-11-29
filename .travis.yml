@@ -4,13 +4,12 @@ cache: yarn
 
 before_install:
   - npm install -g yarn
+  - openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -keyout localhost-privkey.pem -out localhost-cert.pem 
 
 install: yarn install
 
 script: 
   - cp .env.example .env
-  - openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
-    -keyout localhost-privkey.pem -out localhost-cert.pem 
   - yarn run test-integration-jest
   - yarn run build
 
