@@ -26,4 +26,4 @@ server.listen(port, "0.0.0.0", () => {
                 Family:${server.address().family}
                 Ambiente: ${env}`);
 });
-module.exports = app;
+module.exports = server;
