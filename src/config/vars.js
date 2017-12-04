@@ -9,6 +9,7 @@ module.exports = {
     env: process.env.NODE_ENV,
     port: process.env.PORT,
     port_https: process.env.PORT_HTTPS,
+    secret: process.env.SECRET,
     database: {
         host: process.env.DB_HOST,
         vendor: process.env.DB_VENDOR.toLowerCase(),
