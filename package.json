@@ -14,7 +14,7 @@
         "test-integration-jest": "cross-env NODE_ENV=test jest --forceExit",
         "test-coverage": "cross-env NODE_ENV=test istanbul cover jest",
         "test-integration:mocha": "cross-env NODE_ENV=test mocha --opts ./src/api/tests/integration/mocha.opts ./src/api/tests/integration/**/*.js",
-        "docker:dev":"docker-compose -f docker-compose.dev.yml up"
+        "docker:dev": "docker-compose -f docker-compose.dev.yml up"
     },
     "engines": {
         "node": "^8.2.1"
@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "apidoc": "^0.17.6",
+        "bcrypt": "^1.0.3",
         "bcrypt-nodejs": "^0.0.3",
         "body-parser": "^1.17.2",
         "compression": "^1.7.0",
@@ -37,13 +38,14 @@
         "express-session": "^1.15.5",
         "express-validation": "^1.0.2",
         "global": "^4.3.2",
-        "helmet": "^3.8.2",
         "graphql": "^0.11.7",
+        "helmet": "^3.8.2",
         "http-status": "^1.0.1",
         "joi": "^10.6.0",
         "mongoose": "^4.11.12",
         "morgan": "^1.8.2",
         "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
         "pg": "^7.0.2",
         "pg-hstore": "^2.3.2",
         "pm2": "^2.7.1",

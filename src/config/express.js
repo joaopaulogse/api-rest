@@ -3,10 +3,11 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const routes = require("../api/routes");
 const logger = require("morgan");
-const session = require("express-session")
+const session = require("express-session");
 const cors = require("./cors");
-const { secret } = require("./vars")
+const { secret } = require("./vars");
 const { error404, error400 } = require("../api/middleware/error");
+const passport = require("passport");
 
 const app = express();
 
@@ -14,19 +15,21 @@ const app = express();
 app.use(cors);
 
 app.use(helmet());
-app.use(logger("[:date] - :method :url :status :response-time ms - :res[content-length]"));
+app.use(logger("[:date] - :method :url :status :response-time ms - :res[content-length]", { immediate: true }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-    secret:secret,
-    resave:false,
-    saveUninitialized:true
-}))
+    secret,
+    resave: false,
+    saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passport");
 
 app.use(routes);
-
 
 /** Middlewares de error */
 app.use(error404);

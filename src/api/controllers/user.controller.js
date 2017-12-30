@@ -3,7 +3,7 @@ const HttpStatus = require("http-status");
 // mongodb
 const Users = require("../models/users.model");
 
-exports.create = function(req, res) {
+exports.create = (req, res) => {
     const { username, password, email, tipo } = req.body;
     Users.create({ username, password, email, tipo })
         .then((users) => {
@@ -25,7 +25,7 @@ exports.loadUser = (req, res) => {
     Users.findById(req.params.id)
         .then(user => res.status(HttpStatus.OK).send(user))
         .catch((err) => {
-            res.status(HttpStatus.NOT_FOUND).send("não achado!");
+            res.status(HttpStatus.NOT_FOUND).json({error:"não achado!"});
             console.error(err.message);
         });
 };

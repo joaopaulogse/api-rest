@@ -10,12 +10,12 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 */
 
 // server https
-const server_https = https.createServer({
-  key:readFileSync("./localhost-privkey.pem"),
-  cert:readFileSync("./localhost-cert.pem")
-},app).listen(port_https, "0.0.0.0",() => {
-  console.log(`Server https up, ${server_https.address().address}:${server_https.address().port}
-                Family:${server_https.address().family}
+const serverHttps = https.createServer({
+    key: readFileSync("./localhost-privkey.pem"),
+    cert: readFileSync("./localhost-cert.pem"),
+}, app).listen(port_https, "0.0.0.0", () => {
+    console.log(`Server https up, ${serverHttps.address().address}:${serverHttps.address().port}
+                Family:${serverHttps.address().family}
                 Ambiente: ${env}`);
 
 // server http
