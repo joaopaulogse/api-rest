@@ -42,12 +42,16 @@ exports.update = (req, res) => {
         });
 };
 exports.deleteUser = (req, res) => {
-    Users.findByIdAndRemove(req.params.id)
-        .then(() => {
-            res.status(HttpStatus.CREATED).send("Deletado com Sucesso!");
-        })
-        .catch((err) => {
-            res.status(HttpStatus.BAD_REQUEST).send("não foi possivel deletar!");
-            console.error(err.message);
-        });
+    if (req.isAuthenticated()) {
+        Users.findByIdAndRemove(req.params.id)
+            .then(() => {
+                res.status(HttpStatus.CREATED).send("Deletado com Sucesso!");
+            })
+            .catch((err) => {
+                res.status(HttpStatus.BAD_REQUEST).send("não foi possivel deletar!");
+                console.error(err.message);
+            });
+    } else {
+        res.status(HttpStatus.FORBIDDEN).send("Não autorizado!");
+    }
 };

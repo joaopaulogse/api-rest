@@ -17,6 +17,8 @@ app.use(cors);
 app.use(helmet());
 app.use(logger("[:date] - :method :url :status :response-time ms - :res[content-length]", { immediate: true }));
 
+app.set("trust proxy", 1);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -24,6 +26,7 @@ app.use(session({
     secret,
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: true },
 }));
 app.use(passport.initialize());
 app.use(passport.session());
