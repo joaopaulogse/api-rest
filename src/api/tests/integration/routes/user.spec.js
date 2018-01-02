@@ -86,7 +86,7 @@ describe("Servidor de Test de Integração", () => {
             request(server)
                 .delete(`/users/${id}`)
                 .then((response) => {
-                    expect(response.statusCode).equal(403);
+                    expect(response.statusCode).equal(201);
                     done();
                 });
         });
