@@ -10,11 +10,13 @@ const Users = mongoose.Schema({
         type: String,
         required: [true, "Username is required"],
         unique: [true, "Já existe Alguem com esse Username!"],
+        index: true,
     },
     email: {
         type: String,
         required: true,
         unique: [true, "Já existe Alguem com esse Email!"],
+        index: true,
     },
     password: {
         type: String,
