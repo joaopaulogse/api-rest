@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const request = require("supertest");
 const server = require("../../../../server");
+// const mongoose = require("../../../models/users.model");
 
 describe("Servidor de Test de Integração", () => {
     describe("GET /users", () => {
@@ -14,14 +15,14 @@ describe("Servidor de Test de Integração", () => {
         });
     });
     let id = null;
+    const data = {
+        username: "joaoTest",
+        password: "123456",
+        tipo: "USUARIO",
+        email: "joaoTest@testIntegration.com",
+    };
     describe("Cadastro de usuario, POST /cadastro", () => {
         it("Cadastra usuario e em logo em seguida exclui", (done) => {
-            const data = {
-                username: "joaoTest",
-                password: "123456",
-                tipo: "USUARIO",
-                email: "joaoTest@testIntegration.com",
-            };
             request(server)
                 .post("/cadastro")
                 .send(data)
@@ -39,6 +40,23 @@ describe("Servidor de Test de Integração", () => {
                 .get(`/users/${id}`)
                 .then((response) => {
                     expect(response.statusCode).equal(200);
+                    done();
+                });
+        });
+    });
+
+    describe("AUTHENTICATION /auth/login", () => {
+        it("Faz a autenticacao do usuario", (done) => {
+            request(server)
+                .post("/auth/login")
+                .send(
+                    {
+                        username: data.username,
+                        password: data.password,
+                    },
+                )
+                .then((response) => {
+                    expect(response.statusCode).equal(302);
                     done();
                 });
         });
@@ -68,7 +86,7 @@ describe("Servidor de Test de Integração", () => {
             request(server)
                 .delete(`/users/${id}`)
                 .then((response) => {
-                    expect(response.statusCode).equal(201);
+                    expect(response.statusCode).equal(403);
                     done();
                 });
         });
@@ -101,7 +119,7 @@ describe("Servidor de Test de Integração", () => {
             request(server)
                 .delete("/users/1")
                 .then((response) => {
-                    expect(response.statusCode).equal(400);
+                    expect(response.statusCode).equal(403);
                     done();
                 });
         });
