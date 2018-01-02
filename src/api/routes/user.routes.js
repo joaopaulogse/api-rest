@@ -5,7 +5,9 @@ const { registrar } = require("../validations/user.validation");
 
 const router = express.Router();
 
-
+/**
+ * 
+ */
 router.route("/")
     .get(listarUsuarios);
 

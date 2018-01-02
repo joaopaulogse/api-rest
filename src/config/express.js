@@ -15,7 +15,7 @@ const app = express();
 app.use(cors);
 
 app.use(helmet());
-app.use(logger("[:date] - :method :url :status :response-time ms - :res[content-length]", { immediate: true }));
+app.use(logger("common", { immediate: true }));
 
 app.set("trust proxy", 1);
 

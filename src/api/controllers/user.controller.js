@@ -3,6 +3,11 @@ const HttpStatus = require("http-status");
 // mongodb
 const Users = require("../models/users.model");
 
+/**
+ * Criação do Usuario
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 exports.create = (req, res) => {
     const { username, password, email, tipo } = req.body;
     Users.create({ username, password, email, tipo })
@@ -15,12 +20,24 @@ exports.create = (req, res) => {
             res.status(HttpStatus.BAD_REQUEST).send(err);
         });
 };
+
+/**
+ * Lista todos os Usuarios
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 exports.listarUsuarios = (req, res) => {
     Users.find().then((users) => {
         res.setHeader("Content-Type", "application/json");
         res.status(HttpStatus.OK).json(users);
     });
 };
+
+/**
+ * Carrega o Usuario {id}
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 exports.loadUser = (req, res) => {
     Users.findById(req.params.id)
         .then(user => res.status(HttpStatus.OK).send(user))
@@ -29,6 +46,12 @@ exports.loadUser = (req, res) => {
             console.error(err.message);
         });
 };
+
+/**
+ * Atualiza o Usuarios {body}
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 exports.update = (req, res) => {
     const { username, email, tipo, password } = req.body;
     Users.findByIdAndUpdate(req.params.id, { $set: { username, password, email, tipo } }, { 'new' : true })
@@ -41,6 +64,12 @@ exports.update = (req, res) => {
             console.error(err.message);
         });
 };
+
+/**
+ * Deleta o Usuario {id}
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 exports.deleteUser = (req, res) => {
     if (req.isAuthenticated()) {
         Users.findByIdAndRemove(req.params.id)

@@ -2,17 +2,19 @@ const mongoose = require("../../config/mongodb");
 const bcrypt = require("bcrypt-nodejs");
 
 const SALT_WORK_FACTOR = 10;
-
+/**
+ * Schema do Usuarios 
+ */
 const Users = mongoose.Schema({
     username: {
         type: String,
         required: [true, "Username is required"],
-        unique: [true, "Username ja existe"],
+        unique: [true, "Já existe Alguem com esse Username!"],
     },
     email: {
         type: String,
         required: true,
-        unique: true,
+        unique: [true, "Já existe Alguem com esse Email!"],
     },
     password: {
         type: String,
