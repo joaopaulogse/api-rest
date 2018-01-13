@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const request = require("supertest");
 const server = require("../../../../server");
-// const mongoose = require("../../../models/users.model");
+const Users = require("../../../models/users.model");
 
 describe("Servidor de Test de Integração", () => {
     describe("GET /users", () => {
@@ -86,7 +86,7 @@ describe("Servidor de Test de Integração", () => {
             request(server)
                 .delete(`/users/${id}`)
                 .then((response) => {
-                    expect(response.statusCode).equal(201);
+                    expect(response.statusCode).equal(403);
                     done();
                 });
         });
@@ -134,5 +134,8 @@ describe("Servidor de Test de Integração", () => {
                     done();
                 });
         });
+    });
+    afterEach(() => {
+        Users.db.collection("users").deleteMany({});
     });
 });

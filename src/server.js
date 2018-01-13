@@ -15,7 +15,7 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
  * @param {http|https} server 
  * @param {String} protocolo 
  */
-function handlerPrintServer(server, protocolo = "http"){
+function handlerPrintServer(server, protocolo = "http") {
     return `Server ${protocolo} up, ${server.address().address}:${server.address().port}
                 Family:${server.address().family}
                 Ambiente: ${env}`;
@@ -34,7 +34,7 @@ const serverHttps = https.createServer(options, app)
 
 // server http with IPV6
 const server = http.createServer(app);
-server.listen(port, "::1", () => { // IPV6
+server.listen(port, "0.0.0.0", () => { // IPV6
     console.log(handlerPrintServer(server));
 });
 // const serverHttp2 = http2.createServer(options, app) // Experimental

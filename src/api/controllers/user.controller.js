@@ -28,8 +28,9 @@ exports.create = (req, res) => {
  */
 exports.listarUsuarios = (req, res) => {
     Users.find().then((users) => {
+        // console.log(req.sessionID);
         res.setHeader("Content-Type", "application/json");
-        res.status(HttpStatus.OK).json(users);
+        res.status(HttpStatus.OK).json({ users });
     });
 };
 
