@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'yarn run dev'
+    }
+    
+  }
   stages {
     stage('build') {
       steps {
