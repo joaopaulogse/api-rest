@@ -16,6 +16,6 @@ mongoogse.connection.on("open", () => {
     console.log("Database connected");
 });
 mongoogse.connection.on("error", (error, data) => {
-    console.log("Database with Error: ", data.message);
+    console.log("Database with Error: ", data);
 });
 module.exports = mongoogse;
