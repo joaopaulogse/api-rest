@@ -43,7 +43,7 @@ exports.loadUser = (req, res) => {
     Users.findById(req.params.id)
         .then(user => res.status(HttpStatus.OK).send(user))
         .catch((err) => {
-            res.status(HttpStatus.NOT_FOUND).json({error:"não achado!"});
+            res.status(HttpStatus.NOT_FOUND).json({ error: "não achado!" });
             console.error(err.message);
         });
 };
@@ -55,7 +55,7 @@ exports.loadUser = (req, res) => {
  */
 exports.update = (req, res) => {
     const { username, email, tipo, password } = req.body;
-    Users.findByIdAndUpdate(req.params.id, { $set: { username, password, email, tipo } }, { 'new' : true })
+    Users.findByIdAndUpdate(req.params.id, { $set: { username, password, email, tipo } }, { "new" : true })
         .then((user) => {
             res.setHeader("Content-Type", "application/json");
             res.status(HttpStatus.CREATED).send(user);
