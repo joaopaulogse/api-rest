@@ -1,49 +1,48 @@
 #!/usr/bin/env node
-const { exec } = require('child_process')
+const { exec } = require("child_process");
 const program = require("commander");
 program
-    .version(require('./package.json').version)
-    .option('-p, --production', 'Build de produção', ()=>{
-        exec('cp .env.example .env')
-        const npm = exec('yarn run build')
-        npm.stdout.on('data', data=>{
-            console.log(data.toString())
-        })
-        npm.stderr.on('data', data=>{
-            console.log(data.toString())
-        })
-        npm.on('close', code=>{
-            console.log(code.toString())
-            process.exit(0)
-        })
-
+    .version(require("./package.json").version)
+    .option("-p, --production", "Build de produção", () => {
+        exec("cp .env.example .env");
+        const npm = exec("yarn run build");
+        npm.stdout.on("data", (data) => {
+            console.log(data.toString());
+        });
+        npm.stderr.on("data", (data) => {
+            console.log(data.toString());
+        });
+        npm.on("close", (code) => {
+            console.log(code.toString());
+            process.exit(0);
+        });
     })
-    .option('-d, --development', 'Build de desenvolvimento', ()=>{
-        exec('cp .env.example .env')
-        const npm = exec('yarn run dev')
-        npm.stdout.on('data', data=>{
-            console.log(data.toString())
-        })
-        npm.stderr.on('data', data=>{
-            console.log(data.toString())
-        })
-        npm.on('close', code=>{
-            console.log(code.toString())
-        })
+    .option("-d, --development", "Build de desenvolvimento", () => {
+        exec("cp .env.example .env");
+        const npm = exec("yarn run dev");
+        npm.stdout.on("data", (data) => {
+            console.log(data.toString());
+        });
+        npm.stderr.on("data", (data) => {
+            console.log(data.toString());
+        });
+        npm.on("close", (code) => {
+            console.log(code.toString());
+        });
     })
-    .option('-t, --test', 'Roda os testes', ()=>{
-        //copia as varias que voce quer para serem executadas
-        exec('cp .env.example .env')
-        const npm = exec('yarn run test-integration-jest')
-        npm.stdout.on('data', data=>{
-            console.log(data.toString())
-        })
-        npm.stderr.on('data', data=>{
-            console.log(data.toString())
-        })
-        npm.on('close', code=>{
-            console.log(code.toString())
-        })
+    .option("-t, --test", "Roda os testes", () => {
+        // copia as varias que voce quer para serem executadas
+        exec("cp .env.example .env");
+        const npm = exec("yarn run test-integration-jest");
+        npm.stdout.on("data", (data) => {
+            console.log(data.toString());
+        });
+        npm.stderr.on("data", (data) => {
+            console.log(data.toString());
+        });
+        npm.on("close", (code) => {
+            console.log(code.toString());
+        });
     })
-    .option('-e, --exit', 'exit', ()=>process.exit(1))
+    .option("-e, --exit", "exit", () => process.exit(1))
     .parse(process.argv);
